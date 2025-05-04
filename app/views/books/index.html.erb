@@ -1,0 +1,15 @@
+<h1>Books</h1>
+<% @books.each do |book| %>
+
+  <h4>Title</h4>
+  <h4>Body</h4>
+
+  <span><%= book.title %></span>
+  <span><%= book.body %>
+    <%= link_to 'Show', books_path(book.id) %>
+    <%= link_to 'Edit', books_edit_path(book) %>
+    <%= link_to 'Destroy', books_path(book), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </span>
+
+NOT USED YET
+<% end %>
