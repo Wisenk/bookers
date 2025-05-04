@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   get '/bookers' => 'homes#top'
+  resources :books
 
   get '/bookers/books' => 'books#new', as: 'newbook'
   post 'newbook' => 'books#new'
-  get 'bookers/books/:id' => 'books#show', as: 'book'
+  get 'bookers/books/:id' => 'books#show', as: 'bookshow'
 
-  get 'books/:id/edit' => 'books#edit', as: 'edit_book'
-  post 'edit_book' => 'books#edit'
+  get 'books/:id/edit' => 'books#edit', as: 'bookedit'
   patch 'books/:id' => 'books#update', as: 'update_book'
-  delete 'bookers/books/:id' => 'books#destroy', as: 'destroy_book'
+  delete 'books/:id' => 'books#destroy', as: 'bookdestroy'
 
 
   post 'books' => 'books#create'
