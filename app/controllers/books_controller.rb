@@ -1,20 +1,17 @@
 class BooksController < ApplicationController
-  def new
-    @book = Book.new
-    @books = Book.all
-  end
-
   def create
     @book = Book.new(book_params)
     if @book.save
     flash[:notice] = "Book was successfully created."
-    redirect_to newbook_path(@book.id)
+    redirect_to book_path(@book.id)
     else
-      render :new
+      @books = Book.all
+      render :index
     end
   end
 
   def index
+    @book = Book.new
     @books = Book.all
   end
 
@@ -38,8 +35,10 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destroy
-    redirect_to '/bookers/books'
+    if @book.destroy
+    flash[:notice] = "Book was successfully destroyed."
+    redirect_to books_path
+    end
   end
 
 private

@@ -1,5 +1,4 @@
-<div>
-<%= flash[:notice] %>
+<div><%= flash[:notice] %>
 </div>
 
 <p>
@@ -12,9 +11,9 @@
 </p>
 
 <td>
-  <%= link_to 'Edit', bookedit_path(@book.id) %>
+  <%= link_to 'Edit', edit_book_path(@book.id) %>
 </td>
 |
 <td>
-  <%= link_to 'Back', newbook_path %>
+  <%= link_to 'Back', books_path %>
 </td>
